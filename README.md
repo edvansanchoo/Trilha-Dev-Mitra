@@ -1,4 +1,4 @@
-# Trilha-Dev-Mitra (Back-End Jr.)
+# Trilha-Dev-Mitra - (Back-End Jr.)
 #Requisitos da Stack:
   -Postman
   -Mysql
