@@ -18,4 +18,10 @@ public class DimensionEndpoint {
     public List<Dimension> getAllDimension(){
         return dimensionDAO.getAllDimension();
     }
+
+    @PostMapping("/save")
+    public String save(@RequestBody Dimension dimension){
+        return dimensionDAO.save(dimension);
+
+    }
 }
