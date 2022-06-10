@@ -6,7 +6,6 @@ public class Dimension {
     private Integer id;
     private String name;
     private String idDataType;
-    private List<DimensionContent> dimensionContents;
 
     public Integer getId() {
         return id;
@@ -32,11 +31,4 @@ public class Dimension {
         this.idDataType = idDataType;
     }
 
-    public List<DimensionContent> getDimensionContents() {
-        return dimensionContents;
-    }
-
-    public void setDimensionContents(List<DimensionContent> dimensionContents) {
-        this.dimensionContents = dimensionContents;
-    }
 }
