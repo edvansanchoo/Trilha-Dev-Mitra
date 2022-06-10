@@ -24,4 +24,10 @@ public class DimensionDAO {
                 dimension.getName(), dimension.getIdDataType());
         return status == 1 ? "Dimensão: "+dimension.getName()+" Salvo com Sucesso" : "Erro ao salvar";
     }
+
+    public String update(Dimension dimension) {
+        int status = jdbcTemplate.update("UPDATE INT_DIMENSION SET NAME = ?, IDDATATYPE = ? WHERE ID = ?",
+                dimension.getName(), dimension.getIdDataType(), dimension.getId());
+        return status == 1 ? "Dimensão: "+dimension.getName()+" Atualizada com Sucesso" : "Erro ao Atualizar";
+    }
 }

@@ -24,4 +24,9 @@ public class DimensionEndpoint {
         return dimensionDAO.save(dimension);
 
     }
+    @PutMapping("/update")
+    public String update(@RequestBody Dimension dimension){
+        return dimensionDAO.update(dimension);
+
+    }
 }
