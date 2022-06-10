@@ -30,4 +30,9 @@ public class DimensionDAO {
                 dimension.getName(), dimension.getIdDataType(), dimension.getId());
         return status == 1 ? "Dimensão: "+dimension.getName()+" Atualizada com Sucesso" : "Erro ao Atualizar";
     }
+
+    public String delete(int id) {
+        int status = jdbcTemplate.update("DELETE FROM INT_DIMENSION WHERE ID = ?", id);
+        return status == 1 ? "Deletado com Sucesso" : "Erro ao Deletar";
+    }
 }
