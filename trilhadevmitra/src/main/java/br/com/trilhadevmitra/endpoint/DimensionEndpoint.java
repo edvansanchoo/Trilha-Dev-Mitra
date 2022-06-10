@@ -29,4 +29,9 @@ public class DimensionEndpoint {
         return dimensionDAO.update(dimension);
 
     }
+
+    @DeleteMapping(path= "/delete/{id}")
+    public String delete(@PathVariable Integer id){
+        return dimensionDAO.delete(id);
+    }
 }
