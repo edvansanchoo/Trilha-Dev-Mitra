@@ -18,4 +18,10 @@ public class DimensionDAO {
         return jdbcTemplate.query("SELECT * FROM INT_DIMENSION",
                 new BeanPropertyRowMapper<Dimension>(Dimension.class));
     }
+
+    public String save(Dimension dimension) {
+        int status = jdbcTemplate.update("INSERT INTO INT_DIMENSION (NAME, IDDATATYPE) VALUES(?,?)",
+                dimension.getName(), dimension.getIdDataType());
+        return status == 1 ? "Dimensão: "+dimension.getName()+" Salvo com Sucesso" : "Erro ao salvar";
+    }
 }
