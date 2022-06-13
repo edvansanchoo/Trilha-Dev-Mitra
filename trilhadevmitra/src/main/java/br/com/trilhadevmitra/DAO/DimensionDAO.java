@@ -34,4 +34,9 @@ public class DimensionDAO {
     public SimpleJdbcInsertOperations getSimpleJdbcInsert() {
         return new SimpleJdbcInsert(jdbcTemplate.getDataSource()).withTableName("INT_DIMENSION").usingGeneratedKeyColumns("ID");
     }
+
+    public Dimension findById(Integer id) {
+        return jdbcTemplate.queryForObject("SELECT * FROM INT_DIMENSION WHERE ID = ?",
+                new BeanPropertyRowMapper<Dimension>(Dimension.class), id);
+    }
 }
