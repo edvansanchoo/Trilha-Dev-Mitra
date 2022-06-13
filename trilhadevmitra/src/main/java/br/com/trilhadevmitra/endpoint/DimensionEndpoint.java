@@ -38,4 +38,9 @@ public class DimensionEndpoint {
     public ResponseEntity<?> delete(@PathVariable Integer id){
         return new ResponseEntity<>(dimensionDAO.delete(id), HttpStatus.OK);
     }
+
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<Dimension> searchById(@PathVariable Integer id){
+        return new ResponseEntity<>(dimensionDAO.findById(id), HttpStatus.OK);
+    }
 }
