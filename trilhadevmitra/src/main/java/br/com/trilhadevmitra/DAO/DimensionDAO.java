@@ -4,9 +4,10 @@ import br.com.trilhadevmitra.model.Dimension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsertOperations;
 import org.springframework.stereotype.Component;
 
-import java.sql.SQLException;
 import java.util.List;
 
 @Component
@@ -19,20 +20,18 @@ public class DimensionDAO {
                 new BeanPropertyRowMapper<Dimension>(Dimension.class));
     }
 
-    public String save(Dimension dimension) {
-        int status = jdbcTemplate.update("INSERT INTO INT_DIMENSION (NAME, IDDATATYPE) VALUES(?,?)",
-                dimension.getName(), dimension.getIdDataType());
-        return status == 1 ? "Dimensão: "+dimension.getName()+" Salvo com Sucesso" : "Erro ao salvar";
-    }
-
-    public String update(Dimension dimension) {
-        int status = jdbcTemplate.update("UPDATE INT_DIMENSION SET NAME = ?, IDDATATYPE = ? WHERE ID = ?",
+    public Dimension update(Dimension dimension) {
+        jdbcTemplate.update("UPDATE INT_DIMENSION SET NAME = ?, IDDATATYPE = ? WHERE ID = ?",
                 dimension.getName(), dimension.getIdDataType(), dimension.getId());
-        return status == 1 ? "Dimensão: "+dimension.getName()+" Atualizada com Sucesso" : "Erro ao Atualizar";
+        return dimension;
     }
 
-    public String delete(int id) {
-        int status = jdbcTemplate.update("DELETE FROM INT_DIMENSION WHERE ID = ?", id);
-        return status == 1 ? "Deletado com Sucesso" : "Erro ao Deletar";
+    public int delete(int id) {
+        jdbcTemplate.update("DELETE FROM INT_DIMENSION WHERE ID = ?", id);
+        return id;
+    }
+
+    public SimpleJdbcInsertOperations getSimpleJdbcInsert() {
+        return new SimpleJdbcInsert(jdbcTemplate.getDataSource()).withTableName("INT_DIMENSION").usingGeneratedKeyColumns("ID");
     }
 }
