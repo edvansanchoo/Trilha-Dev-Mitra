@@ -15,4 +15,5 @@
 1° Desafio:
   -Criar um CRUD pra Dimension
   -Criar um CRUD de relacionamento entre dimensões(Àrvores)
+  - Configurar o Swagger
   
