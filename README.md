@@ -8,7 +8,8 @@
   - Docker
 
 #Sugestões de Estudos:
-  - Estruta de dados com foco rm árvore binária
+  - Padrões RESTful
+  - Estruta de dados com foco em árvore binária
   - Recursividade
   - Banco de dados
 
